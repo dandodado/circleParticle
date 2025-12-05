@@ -7,14 +7,26 @@ class CirclePower {
   }
 
   getForce(m) {
-    let force = p5.Vector.sub(this.position, m.position);
-    let distance = force.mag();
-    distance = constrain(distance, 5, 25);
-    force.normalize();
-    let strength = this.mass / (distance * distance);
-    force.mult(strength);
+  let force = p5.Vector.sub(this.position, m.position);
+  let distance = force.mag();
+
+  let minDist = 80;   
+
+  if (distance < minDist) {
+    let strength2 = this.mass / (distance * distance)/10000;
+  force.mult(-strength2);
     return force;
   }
+if (distance > minDist+10) {
+  distance = constrain(distance, 5, 25);
+  force.normalize();
+
+  let strength = this.mass / (distance * distance);
+  force.mult(strength);
+
+  return force;
+}
+}
 
   // Method to display
   show() {
