@@ -2,12 +2,12 @@ let emitter;
 let attractor;
 function setup() {
   createCanvas(800 , 800);
-  emitter = new Emitter(width / 2, 60);
+  emitter = new Emitter(width / 2, 30);
   attractor = new CirclePower();
 }
 
 function draw() {
-  background(200,30);
+  background(200,40);
   emitter.addParticle();
   emitter.run();
   //attractor.show();

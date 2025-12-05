@@ -19,15 +19,26 @@ class Particle {
   update() {
     this.velocity.add(this.acceleration);
     this.position.add(this.velocity);
-    this.lifespan -= 0.3;
+    this.lifespan -= 0.35;
     this.acceleration.mult(0);
   }
 
   // Method to display
   show() {
-    stroke(0, this.lifespan);
-    strokeWeight(2);
-    fill(127, this.lifespan);
+  
+    if(this.velocity.mag() > 1.5) {
+         // stroke(0, this.lifespan);
+          //strokeWeight(2);
+          fill(200,200,100);
+    } if(this.velocity.mag() < 1.5) {
+         // stroke(0, this.lifespan);
+         // strokeWeight(2);
+          fill(127,200,200);
+    }if(this.velocity.mag() > 3) {
+          //stroke(0, this.lifespan);
+          //strokeWeight(2);
+          fill(100,200,100);
+    }
     circle(this.position.x, this.position.y, 8);
   }
 
