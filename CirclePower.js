@@ -13,8 +13,8 @@ class CirclePower {
   let minDist = 80;   
 
   if (distance < minDist) {
-    let strength2 = this.mass / (distance * distance)/10000;
-  force.mult(-strength2);
+    let strength = this.mass / (distance * distance);
+  force.mult(-strength);
     return force;
   }
 if (distance > minDist+10) {

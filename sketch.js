@@ -1,8 +1,8 @@
 let emitter;
 let attractor;
 function setup() {
-  createCanvas(800 , 800);
-  emitter = new Emitter(width / 2, 30);
+  createCanvas(1200 , 1200);
+  emitter = new Emitter(width / 2, width/2-370);
   attractor = new CirclePower();
 }
 
