@@ -19,7 +19,9 @@ class Emitter {
   applyForceObject(fObj) {
      for (let particle of this.particles) {
       let force = fObj.getForce(particle);
+      let force2 = fObj.getForce2(particle);
       particle.applyForce(force);
+       fObj.applyForce(force2);
     }     
   }
 

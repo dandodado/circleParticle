@@ -2,20 +2,47 @@ class CirclePower {
 
   constructor() {
     this.position = createVector(width /2, height / 2);
+    this.velocity = createVector(0, 0);
+    this.acceleration = createVector(0, 0);
     this.mass = 20;
     this.dragOffset = createVector(0, 0);
   }
+  
+  update() {
+  this.velocity.add(this.acceleration);
+  this.position.add(this.velocity);
+  this.acceleration.mult(0);
+}
 
+applyForce(force) {
+  let f = force;;
+  this.acceleration.add(f);
+}
   getForce(m) {
-    let force = p5.Vector.sub(this.position, m.position);
-    let distance = force.mag();
-    distance = constrain(distance, 5, 25);
-    force.normalize();
-    let strength = this.mass / (distance * distance);
-    force.mult(strength);
+   let force = p5.Vector.sub(this.position, m.position);
+  let distance = force.mag();
+
+  let minDist = 80;   
+
+  if (distance < minDist) {
+    let strength = this.mass / (distance * distance)*1.3;
+  force.mult(-strength);
     return force;
   }
+  }
+  getForce2(m) {
+   let force = p5.Vector.sub(this.position, m.position);
+  let distance = force.mag();
 
+  let minDist = 100;   
+
+  if (distance < minDist) {
+    let strength = this.mass / (distance * distance)*0.005;
+  force.mult(strength);
+    return force;
+  }
+  }
+   
   // Method to display
   show() {
     ellipseMode(CENTER);
